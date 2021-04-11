@@ -1,0 +1,4 @@
+<h2>{{title}}</h2>
+<ng-terminal #term [dataSource]="writeSubject" (keyInput)="onKeyInput($event)" [displayOption]="displayOptionBounded"
+[ngClass]="{'ng-terminal': (displayOption.activateDraggableOnEdge == undefined && displayOption.fixedGrid == undefined)}">
+</ng-terminal>
