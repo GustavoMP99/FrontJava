@@ -1,7 +1,15 @@
 <div>
     
     <div class="row">
-        <div class="col-sm-6" style="background-color: rebeccapurple; "> Snippet </div>
+        <div class="col-sm-6" style="background-color: rebeccapurple; ">
+            Snippet 
+            <button (click)="pruebaEndpoint()"> Prueba </button>
+
+            <div *ngFor="let persona of personas">
+                {{ persona.name }}
+            </div>
+
+        </div>
         <div class="col-sm-6" style="background-color: red;"> Variables, métodos, clases... </div>
     </div>
     
