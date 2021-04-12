@@ -16,11 +16,11 @@ export class DataService {
   private apiRout = "http://localhost:8080/backendJava/personas"
 
 
-
   constructor(private response: HttpClient) { }
   
   ngOnInit() { }
 
+  tokensList = [];
 
   /**
    * Retrona: La cantidad de registros asociados a este departamento.

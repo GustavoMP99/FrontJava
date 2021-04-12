@@ -11,6 +11,7 @@ import { TerminalComponent } from './terminal/terminal.component';
 import { MatSlideToggleModule  } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { NgTerminalModule } from 'ng-terminal';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,6 +40,7 @@ import { TokensTableComponent } from './tokens-table/tokens-table.component';
     MatSlideToggleModule,
     MatInputModule,
     MatIconModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,
