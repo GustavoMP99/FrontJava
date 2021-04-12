@@ -13,7 +13,7 @@ export class CodeCompleteComponent implements OnInit {
   ngOnInit() { }
 
   /**
-   * Función para llamar todoel código
+   * Función para llamar todo el código
    */
   allCode(text): void{
     
@@ -24,8 +24,10 @@ export class CodeCompleteComponent implements OnInit {
     }
     this.data.tokensList=[];
     this.data.sendAllCode(text).subscribe(data => {
-      console.log("data");
-      console.log(data);
+      var res= data.toString;
+      //console.log( data[0][0] );
+      this.getError(res);
+      
       
       /* Recorrer la respuesta. */
       let cont: number=0;
@@ -70,6 +72,11 @@ export class CodeCompleteComponent implements OnInit {
       }      
     });
   }
-
-
+getError(text){
+  if(text.includes("Error")){
+    var res = text.split(":");
+    let string = res[1]+res[2]+res[3];
+    //console.log(string);
+  }
+}
 }

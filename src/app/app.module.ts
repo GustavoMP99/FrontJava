@@ -7,6 +7,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { AlertComponent } from './_alert/alert.component';
+import { AlertService } from './_alert/alert.service';
 import { TerminalComponent } from './terminal/terminal.component';
 import { MatSlideToggleModule  } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +30,8 @@ import { TokensTableComponent } from './tokens-table/tokens-table.component';
     HomeComponent,
     TerminalComponent,
     TokensTableComponent,
-    CodeCompleteComponent
+    CodeCompleteComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { TokensTableComponent } from './tokens-table/tokens-table.component';
     MatFormFieldModule,
     MatTableModule
   ],
-  providers: [ DataService, ],
+  providers: [ DataService, AlertService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
