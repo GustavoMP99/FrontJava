@@ -7,6 +7,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Terminal } from 'xterm';
 import { FunctionsUsingCSI } from 'ng-terminal';
 import { DataService } from '../data.service';
+import { AlertService } from '../_alert';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   @ViewChild('term', {static: false}) child: NgTerminal;
 
-  constructor( private data: DataService) { }
+  constructor( private data: DataService, private alert:AlertService) { }
 
   ngOnInit() {
     this.rowsControl.setValue(10);
@@ -54,7 +55,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     })
 
     this.child.keyEventInput.subscribe(e => {
-      console.log('keyboard event:' + e.domEvent.keyCode + ', ' + e.key);
+      //console.log('keyboard event:' + e.domEvent.keyCode + ', ' + e.key);
       const ev = e.domEvent;
       if(ev.keyCode !==8){
         string+=e.key;
@@ -63,7 +64,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         string=string.substring(0, string.length - 1);
       }
       const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
-      console.log(string);
+      //console.log(string);
       if (ev.keyCode === 13) { //When the enter is pressed
         if(string.includes("}")){
           this.bool=false;
@@ -78,15 +79,53 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         if(this.bool===false){//When the sentences is finish the program return it
 
           this.data.sendAllCode(string).subscribe(data => {
-            console.log(data);
-            let list:any=data;
-            list.forEach(element => {
-              console.log(element);
-            });
-          });
+            //console.log(data);
+            
+            /* Recorrer la respuesta. */
+            let cont: number=0;
+            while(true){
+              
+              if(data[cont] == undefined){
+                break;
+              }
+              else{                
+                var d = data[cont];
+                var splited = d.toString().split('"');
+                
+                var t = splited[3];
+                var v;
+                
+                if(t=="STRINGLITERAL")
+                  v = splited[8]
+                
+                else
+                  v = splited[7]
+                  
+                if(splited.length==1){
+                  this.getError(splited[0]);   
+                  string="";         
+                  return;
+                }
+                else{
+                  //Cambiar unicode a caracter.
+                  if(t!="EOF"){
+                    if(t=='EQUAL')
+                      this.data.tokensList.push({'token': t, 'valor': '='});
+                    else if(t=="IDENTICAL")
+                      this.data.tokensList.push({'token': t, 'valor': '=='});
+                    else if(t=="DIF")
+                      this.data.tokensList.push({'token': t, 'valor': '!='});
+                    else
+                      this.data.tokensList.push({'token': t, 'valor': v});
 
-        string="";
-      }
+                  }
+                }
+                cont++;
+              }
+            }
+            string="";
+          });
+        }
         
       } else if (ev.keyCode === 8) {//backspace, delete from console
         // Do not delete the prompt
@@ -97,10 +136,9 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         }
       } else if (printable) {
         this.child.write(e.key);
-        
       }
       
-    })
+    });
     this.rowsControl.valueChanges.subscribe(() => { this.invalidate() });
     this.colsControl.valueChanges.subscribe(() => { this.invalidate() });
   }
@@ -131,15 +169,10 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   get displayOptionForLiveUpdate() {
     return JSON.parse(JSON.stringify(this.displayOption));
   }
-   getError(text){
-    if(text.includes("Error")){
-      var res = text.split(":");
-      let string = res[1]+":"+res[2]+res[3];
-      console.log(string);
-      var res2 = string.split(",")
-      console.log(res2[0]);
-      return res2[0];
-    }
+   getError(text: string){
+    console.log(text);
+    
+    this.alert.error(text)
   }
 
 

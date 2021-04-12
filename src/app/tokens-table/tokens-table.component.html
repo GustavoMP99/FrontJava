@@ -22,7 +22,7 @@
     <em>No se hay variables registradas</em>
 
   </div>
-  <div *ngIf="this.dataSource != 0">
+  <div *ngIf="this.dataSource != 0 && this.show==true">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="position">

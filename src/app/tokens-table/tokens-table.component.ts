@@ -17,20 +17,26 @@ export class TokensTableComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name'];
   dataSource = ELEMENT_DATA;
   
+  show:boolean=true;
   
   constructor(private data:DataService) { }
 
   ngOnInit() { }
 
-  showVar():void {
-    console.log(this.data.tokensList.length);
+  async showVar() {
     if(this.data.tokensList.length == 0){
       alert("No se han creado variables. ¡Escribe tu código!")
       return;
     }
+    this.show=false;
+
     
-    this.dataSource =this.data.tokensList;
+    this.dataSource = this.data.tokensList;
+    console.log(this.dataSource);
     
+    setTimeout( () => { this.show=true; }, 3000 );
+
+
   }
 
   /**
@@ -38,7 +44,8 @@ export class TokensTableComponent implements OnInit {
    */
   clearVar():void{
     this.data.tokensList=[];
-    this.dataSource =this.data.tokensList;
+    this.dataSource = [];
+    //this.dataSource =this.data.tokensList;
 
   }  
 }

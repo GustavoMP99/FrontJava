@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { AlertService } from '../_alert';
 
 @Component({
   selector: 'app-code-complete',
@@ -8,7 +9,7 @@ import { DataService } from '../data.service';
 })
 export class CodeCompleteComponent implements OnInit {
 
-  constructor( private data: DataService ) { }
+  constructor( private data: DataService,  private alert:AlertService ) { }
 
   ngOnInit() { }
 
@@ -16,19 +17,17 @@ export class CodeCompleteComponent implements OnInit {
    * Función para llamar todo el código
    */
   allCode(text): void{
-    
     console.log("text: ", text);
+    //console.log(decodeURIComponent(JSON.parse('"\\u0027"')));
+     
+
     if(text == ""){
       alert("Antes de correr, escribe tu código")
       return;
     }
     this.data.tokensList=[];
     this.data.sendAllCode(text).subscribe(data => {
-      var res= data.toString;
-      //console.log( data[0][0] );
-      this.getError(res);
-      
-      
+
       /* Recorrer la respuesta. */
       let cont: number=0;
       while(true){
@@ -49,9 +48,11 @@ export class CodeCompleteComponent implements OnInit {
           else
             v = splited[7]
         
-          if(v=="Error"){
-            alert("asd");
+          
+          if(splited.length==1){
+            this.getError(splited[0]);   
             return;
+
           }
           else{
             //Cambiar unicode a caracter.
@@ -69,14 +70,14 @@ export class CodeCompleteComponent implements OnInit {
           }
 
         }
-      }      
+      }
+      this.alert.success("Compilación exitosa");
+     
     });
   }
-getError(text){
-  if(text.includes("Error")){
-    var res = text.split(":");
-    let string = res[1]+res[2]+res[3];
-    //console.log(string);
+  getError(text: string){
+    console.log(text);
+    this.alert.error(text)
+
   }
-}
 }
