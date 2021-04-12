@@ -19,6 +19,7 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CodeCompleteComponent } from './code_complete/code_complete.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { CodeCompleteComponent } from './code_complete/code_complete.component';
     BrowserAnimationsModule,
     MatCardModule,
     NgxJsonViewerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTableModule
   ],
   providers: [ DataService, ],
   bootstrap: [AppComponent]
