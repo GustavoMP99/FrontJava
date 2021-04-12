@@ -5,10 +5,10 @@ import {TerminalComponent} from './terminal/terminal.component';
 
 export const ROUTES: Routes = [
     {
-        path: '',  component: HomeComponent
+        path: '',  component: HomeComponent,
     },
     {
         path: 'a',  component: TerminalComponent
-    },
+    }
     
 ];

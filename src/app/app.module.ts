@@ -8,21 +8,23 @@ import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { TerminalComponent } from './terminal/terminal.component';
-
 import { MatSlideToggleModule  } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { NgTerminalModule } from 'ng-terminal';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { CodeCompleteComponent } from './code_complete/code_complete.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TerminalComponent
+    TerminalComponent,
+    CodeCompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatButtonModule,
     MatSlideToggleModule,
     MatInputModule,
+    MatIconModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCardModule,

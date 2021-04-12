@@ -1,21 +1,16 @@
 <div>
-    
-    <div class="row">
-        <div class="col-sm-6" style="background-color: rebeccapurple; ">
-            Snippet 
-            <button (click)="pruebaEndpoint()"> Prueba </button>
-
-            <div *ngFor="let persona of personas">
-                {{ persona.name }}
-            </div>
-
+    <div class="row" style="height: 55vh;">
+        <div class="col-sm-6" style="height: 55vh;">
+            <app-terminal></app-terminal>
         </div>
-        <div class="col-sm-6" style="background-color: red;"> Variables, métodos, clases... </div>
+        <div class="col-sm-6" style="background-color: red; height: 55vh;"> Variables, métodos, clases... </div>
     </div>
     
-    <div class="row">
-        <div class="col-sm-6" style="background-color: yellow;"> Código </div>
-        <div class="col-sm-6" style="background-color: gray"> Errores </div>
+    <div class="row"  style="height: 45vh;">
+        <div class="col-sm-6" style="background-color: rgb(255, 255, 255); height: 45vh;"> 
+            <app-code-complete></app-code-complete>
+        </div>
+        <div class="col-sm-6" style="background-color: bisque; height: 45vh;"> Errores </div>
     </div>
 
 </div>

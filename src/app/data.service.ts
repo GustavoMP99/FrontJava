@@ -36,7 +36,9 @@ export class DataService {
   }
 
 
-
+  sendAllCode(code){
+    return this.response.post(this.apiRout, code); 
+  }
 
 
 

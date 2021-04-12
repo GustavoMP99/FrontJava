@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
 
   personas:any;
-  constructor( private data: DataService) { }
+  constructor( private data: DataService ) { }
 
   ngOnInit() {  }
 
