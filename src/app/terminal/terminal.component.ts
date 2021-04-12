@@ -80,7 +80,10 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
           this.data.sendAllCode(string).subscribe(data => {
             console.log(data);
-            
+            let list:any=data;
+            list.forEach(element => {
+              console.log(element);
+            });
           });
 
         string="";
@@ -129,5 +132,16 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   get displayOptionForLiveUpdate() {
     return JSON.parse(JSON.stringify(this.displayOption));
   }
+   getError(text){
+    if(text.includes("Error")){
+      var res = text.split(":");
+      let string = res[1]+":"+res[2]+res[3];
+      console.log(string);
+      var res2 = string.split(",")
+      console.log(res2[0]);
+      return res2[0];
+    }
+  }
+
 
 }

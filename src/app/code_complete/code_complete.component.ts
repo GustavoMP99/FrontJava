@@ -14,7 +14,7 @@ export class CodeCompleteComponent implements OnInit {
   }
 
   /**
-   * Función para llamar todoel código
+   * Función para llamar todo el código
    */
   allCode(text){
     console.log("text: ", text);
@@ -24,9 +24,18 @@ export class CodeCompleteComponent implements OnInit {
     }
     
     this.data.sendAllCode(text).subscribe(data => {
-      console.log( data );
+      var res= data.toString;
+      //console.log( data[0][0] );
+      this.getError(res);
       
       
     });
   }
+getError(text){
+  if(text.includes("Error")){
+    var res = text.split(":");
+    let string = res[1]+res[2]+res[3];
+    //console.log(string);
+  }
+}
 }
