@@ -2,18 +2,48 @@ import { Injectable, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export class Persona{
+  id:number;
+  name:String;
+  apellidos:String
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
   //private apiRout = "http://35.231.225.6:8003/"
-  private apiRout = "http://localhost:8003/"
+  private apiRout = "http://localhost:8080/backendJava/personas"
+
 
 
   constructor(private response: HttpClient) { }
   
   ngOnInit() { }
+
+
+  
+
+
+
+  /**
+   * Retrona: La cantidad de registros asociados a este departamento.
+   * @param value 
+   */
+   getUsers(){
+    return this.response.get(this.apiRout)
+  }
+
+
+  sendAllCode(code){
+    return this.response.post(this.apiRout, code); 
+  }
+
+
+
+
+
 
   /**
    * Retrona: La cantidad de registros asociados a este departamento.
