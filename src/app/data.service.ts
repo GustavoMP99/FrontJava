@@ -13,7 +13,6 @@ export class Persona{
 })
 export class DataService {
 
-  //private apiRout = "http://35.231.225.6:8003/"
   private apiRout = "http://localhost:8080/backendJava/personas"
 
 
@@ -21,10 +20,6 @@ export class DataService {
   constructor(private response: HttpClient) { }
   
   ngOnInit() { }
-
-
-  
-
 
 
   /**
@@ -39,8 +34,6 @@ export class DataService {
   sendAllCode(code){
     return this.response.post(this.apiRout, code); 
   }
-
-
 
 
 

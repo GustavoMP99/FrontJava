@@ -25,8 +25,7 @@ export class CodeCompleteComponent implements OnInit {
     
     this.data.sendAllCode(text).subscribe(data => {
       console.log( data );
-      let respuesta = data[0]; 
-      console.log(respuesta);
+      
       
     });
   }

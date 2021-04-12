@@ -6,6 +6,7 @@ import { DisplayOption } from 'ng-terminal';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Terminal } from 'xterm';
 import { FunctionsUsingCSI } from 'ng-terminal';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   @ViewChild('term', {static: false}) child: NgTerminal;
 
-  constructor() { }
+  constructor( private data: DataService) { }
 
   ngOnInit() {
     this.rowsControl.setValue(10);
@@ -63,7 +64,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       }
       const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
       console.log(string);
-      if (ev.keyCode === 13) {//When the enter is pressed
+      if (ev.keyCode === 13) { //When the enter is pressed
         if(string.includes("}")){
           this.bool=false;
         }
@@ -75,7 +76,13 @@ export class TerminalComponent implements OnInit, AfterViewInit {
           this.child.write('\n' + FunctionsUsingCSI.cursorColumn(1) + '--'); // \r\n
         }
         if(this.bool===false){//When the sentences is finish the program return it
-        console.log("Full string: "+string);
+          console.log("Full string: "+string);
+
+          this.data.sendAllCode(string).subscribe(data => {
+            console.log(data);
+            
+          });
+
         string="";
       }
         
