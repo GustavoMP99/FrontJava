@@ -18,11 +18,13 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
+import { TokensTableComponent } from './tokens-table/tokens-table.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TerminalComponent
+    TerminalComponent,
+    TokensTableComponent
   ],
   imports: [
     BrowserModule,

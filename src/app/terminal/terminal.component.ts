@@ -7,24 +7,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Terminal } from 'xterm';
 import { FunctionsUsingCSI } from 'ng-terminal';
 
-export class TableStickyColumnsExample {
-  displayedColumns =
-      ['token', 'val'];
-  dataSource = ELEMENT_DATA;
-}
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen'},
-  {position: 2, name: 'Helium'},
-  {position: 3, name: 'Lithium'},
-  {position: 4, name: 'Beryllium'}
-
-];
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
@@ -32,9 +15,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class TerminalComponent implements OnInit, AfterViewInit {
-
-  displayedColumns: string[] = ['position', 'name'];
-  dataSource = ELEMENT_DATA;
 
   title = 'Terminal';
   color = 'accent';
