@@ -13,7 +13,7 @@ export class Persona{
 })
 export class DataService {
 
-  private apiRout = "http://localhost:8080/backendJava/personas"
+  private apiRout = "http://localhost:8080/backendJava/compilador"
 
 
   constructor(private response: HttpClient) { }
