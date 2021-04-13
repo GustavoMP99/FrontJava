@@ -1,3 +1,9 @@
 table {
   width: 100%;
 }
+.header {
+  padding: 10px;
+  background: #1abc9c;
+  color: white;
+  font-size: 15px;
+}

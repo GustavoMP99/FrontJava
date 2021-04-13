@@ -8,7 +8,9 @@
  
 
 <div>
-    <h2 style="  margin-left: auto; margin-right: auto;">{{title}}</h2>
+    <div class="header">
+        <h1>Terminal</h1>
+          </div>
     <ng-terminal #term [dataSource]="writeSubject" (keyInput)="onKeyInput($event)" [displayOption]="displayOptionBounded"
         [ngClass]="{'ng-terminal': (displayOption.activateDraggableOnEdge == undefined && displayOption.fixedGrid == undefined)}">
     </ng-terminal>
