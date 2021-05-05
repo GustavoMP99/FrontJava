@@ -19,15 +19,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {  }
 
-  pruebaEndpoint(){
-    
-    this.data.getUsers().subscribe( data => {
-      console.log("DATA");
-      //console.log(data);
-      this.personas=data;
-    });
-    
-  }
+
   goAlert(text){
     this.alertService.error(text, this.options)
   }

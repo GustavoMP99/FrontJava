@@ -64,7 +64,6 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         string=string.substring(0, string.length - 1);
       }
       const printable = !ev.altKey && !ev.ctrlKey && !ev.metaKey;
-      //console.log(string);
       if (ev.keyCode === 13) { //When the enter is pressed
         if(string.includes("}")){
           this.bool=false;
@@ -78,6 +77,8 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         }
         if(this.bool===false){//When the sentences is finish the program return it
 
+          console.log(string);
+          
           this.data.sendAllCode(string).subscribe(data => {
             //console.log(data);
             

@@ -18,7 +18,6 @@ export class CodeCompleteComponent implements OnInit {
    */
   allCode(text): void{
     console.log("text: ", text);
-    //console.log(decodeURIComponent(JSON.parse('"\\u0027"')));
      
 
     if(text == ""){
