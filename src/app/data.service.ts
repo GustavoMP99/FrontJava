@@ -2,11 +2,6 @@ import { Injectable, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export class Persona{
-  id:number;
-  name:String;
-  apellidos:String
-}
 
 @Injectable({
   providedIn: 'root'

@@ -21,15 +21,19 @@ export class CodeCompleteComponent implements OnInit {
      
 
     if(text == ""){
-      alert("Antes de correr, escribe tu código")
+      alert("Antes de presiona el botón, escribe tu código")
       return;
     }
     this.data.tokensList=[];
     this.data.sendAllCode(text).subscribe(data => {
-
+      console.log(data)
       /* Recorrer la respuesta. */
       let cont: number=0;
       while(true){
+        if(data == null){
+          alert("Intente de nuevo, hubo un error.")
+          break;
+        }
         
         if(data[cont] == undefined){
           break;
@@ -67,11 +71,9 @@ export class CodeCompleteComponent implements OnInit {
             }
             cont++;
           }
-
         }
-      }
+      } 
       this.alert.success("Compilación exitosa");
-     
     });
   }
   getError(text: string){

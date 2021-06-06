@@ -80,7 +80,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
           console.log(string);
           
           this.data.sendAllCode(string).subscribe(data => {
-            //console.log(data);
+            console.log(data);
             
             /* Recorrer la respuesta. */
             let cont: number=0;
