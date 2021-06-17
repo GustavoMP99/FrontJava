@@ -53,7 +53,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     this.child.keyInput.subscribe((input) => {
       //do nothing because it will be replaced keyEventInput
     })
-
+/*
     this.child.keyEventInput.subscribe(e => {
       //console.log('keyboard event:' + e.domEvent.keyCode + ', ' + e.key);
       const ev = e.domEvent;
@@ -82,7 +82,6 @@ export class TerminalComponent implements OnInit, AfterViewInit {
           this.data.sendAllCode(string).subscribe(data => {
             console.log(data);
             
-            /* Recorrer la respuesta. */
             let cont: number=0;
             while(true){
               
@@ -141,7 +140,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       
     });
     this.rowsControl.valueChanges.subscribe(() => { this.invalidate() });
-    this.colsControl.valueChanges.subscribe(() => { this.invalidate() });
+    this.colsControl.valueChanges.subscribe(() => { this.invalidate() });*/
   }
 
   invalidate() {

@@ -7,15 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-
-  private apiRout = "http://localhost:8080/backendJava/compilador"
-
+  
+  //private apiRout = "http://localhost:8080/backendJava/compilador"
+  private apiRout = "https://backendcompi.herokuapp.com/backendJava/compilador"
 
   constructor(private response: HttpClient) { }
   
   ngOnInit() { }
 
-  tokensList = [];
+  dataList = [];
+
 
   /**
    * Función que conecta con el backend.

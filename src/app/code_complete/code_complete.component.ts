@@ -8,6 +8,7 @@ import { AlertService } from '../_alert';
   styleUrls: ['./code_complete.component.css']
 })
 export class CodeCompleteComponent implements OnInit {
+  resultado=[];
 
   constructor( private data: DataService,  private alert:AlertService ) { }
 
@@ -24,12 +25,30 @@ export class CodeCompleteComponent implements OnInit {
       alert("Antes de presiona el botón, escribe tu código")
       return;
     }
-    this.data.tokensList=[];
-    this.data.sendAllCode(text).subscribe(data => {
+
+    this.resultado = [];
+    this.data.sendAllCode(text).subscribe((data:  Object[]) => {
       console.log(data)
+
       /* Recorrer la respuesta. */
+      data.forEach(element => {
+        console.log(element);
+        if(String(element).includes("ERROR")){
+          this.getError(String(element));
+        }
+        else{
+          this.resultado.push(String(element))
+          //this.alert.success(String(element));
+        }
+      });
+      this.data.dataList = this.resultado;
+
+
+
+      /*
+      
       let cont: number=0;
-      while(true){
+      while(cont){
         if(data == null){
           alert("Intente de nuevo, hubo un error.")
           break;
@@ -40,6 +59,10 @@ export class CodeCompleteComponent implements OnInit {
         }
         else{
           var d = data[cont];
+          console.log(d);
+          this.alert.success(d);
+          cont++;
+          
           var splited = d.toString().split('"');
           
           
@@ -69,11 +92,11 @@ export class CodeCompleteComponent implements OnInit {
               else
                 this.data.tokensList.push({'token': t, 'valor': v});
             }
-            cont++;
+            
           }
         }
-      } 
-      this.alert.success("Compilación exitosa");
+      } */
+      
     });
   }
   getError(text: string){

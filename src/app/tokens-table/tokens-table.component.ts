@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
-
 export interface PeriodicElement {
   token: string;
   valor: number;
@@ -18,34 +17,15 @@ export class TokensTableComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   
   show:boolean=true;
+
+  info:string;
   
   constructor(private data:DataService) { }
 
   ngOnInit() { }
 
-  async showVar() {
-    if(this.data.tokensList.length == 0){
-      alert("No se han creado variables. ¡Escribe tu código!")
-      return;
-    }
-    this.show=false;
-
-    
-    this.dataSource = this.data.tokensList;
-    console.log(this.dataSource);
-    
-    setTimeout( () => { this.show=true; }, 3000 );
-
-
+  showInfo(){
+    return this.data.dataList;
   }
 
-  /**
-   * Limpiar la lista de tokens.
-   */
-  clearVar():void{
-    this.data.tokensList=[];
-    this.dataSource = [];
-    //this.dataSource =this.data.tokensList;
-
-  }  
 }
