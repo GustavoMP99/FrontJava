@@ -7,7 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DataService } from './data.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AlertComponent } from './_alert/alert.component';
+import { AlertModule } from './_alert/alert.module';
 import { AlertService } from './_alert/alert.service';
 import { TerminalComponent } from './terminal/terminal.component';
 import { MatSlideToggleModule  } from '@angular/material/slide-toggle';
@@ -31,13 +31,12 @@ import { TokensTableComponent } from './tokens-table/tokens-table.component';
     TerminalComponent,
     TokensTableComponent,
     CodeCompleteComponent,
-    AlertComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
     HttpClientModule,
-
+    AlertModule,
     NgTerminalModule,
     MatButtonModule,
     MatSlideToggleModule,
